@@ -11,11 +11,43 @@
 			1. We first computed the boundary for the triangle by calculating the min and max value of X and Y for the three verices of the traingle.
 			Then, we iterate through each points in the box, we define the pixel is inside the triangle if the center of the pixel is inside the triangle.
 			For the point in triangle test, we compute the barycentric coordinate of the triangle to see if the point is inside. Lastly, we call fill in color for the point if it's inside the triangle.
+		</p>
+		<p>
 			2. Our algorithm is no worse than checking each sample within the bounding box because we checked each point in the bounding box of the triangle but not every sample in the frame.
 		</p>
-		<h2>
-			Task2:
-		</h2>
+		<img src="/image/cs184_hw1_task1_4.png"/>
+		<h2>Task2: </h2>
+		<p>
+			1. Supersampling is useful because it allows us to approximate sampling of one pixel by sampling multiple points within the pixel and thus made the image qualitiy better.
+			We first resized the sample buffer to times it with the sample rate. In that case, we are able to perform point-in triangle test for every single points in the supersampling buffer.
+			As we need to fill the frame buffer, we performed downsampling in <code>RasterizerImp::resolve_to_framebuffer()</code>. 
+			Here, we iterates every points in sample buffer, sum the rgb value of points in every pixel in the frame, compute the average, and fill into the frame.
+		</p>
+		<style>
+			.column {
+				float: left;
+				width: 30.33%;
+				padding: 5px;
+			  }
+			  
+			  /* Clear floats after image containers */
+			  .row::after {
+				content: "";
+				clear: both;
+				display: table;
+			  }
+		</style>
+		<div class="row">
+			<div class="column">
+			  <img src="/image/task2_rate1.png" alt="sample rate = 1" style="width:100%">
+			</div>
+			<div class="column">
+			  <img src="/image/task2_rate4.png" alt="sample rate = 4" style="width:100%">
+			</div>
+			<div class="column">
+			  <img src="/image/task2_rate16.png" alt="sample rate = 16" style="width:100%">
+			</div>
+		</div>
 		<h2>
 			Task3:
 		</h2>
