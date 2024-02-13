@@ -50,6 +50,16 @@
 		</div>
 		<h2>
 			Task3:
+			<p>
+				Pixel sampling is the process of selecting a color value for a pixel based on a texture map.
+				Nearest neighbor sampling is when a texture is mapped onto a surface, the color of the closest texel (texture pixel) to the sample point is used. 
+				In the implementation, I calculated the exact texture coordinates where the pixel should sample from. Then, I found the nearest texel coordinates by flooring the floating-point numbers to integers. You use these integer coordinates to look up the color in the texture array and apply it to the pixel.
+				
+				Bilinear sampling is a bit more complex and provides a smoother result. It works by taking the closest four texels that surround the sample point, 
+				and then performs a linear interpolation between the horizontal two pairs of texels and interlopate again baseed on the two horizontal interpolations to calculate the final color (based from lecture). This interpolation takes into account the distance of the sample point from each of the four surrounding texels, which results in a much smoother image when the texture is scaled or rotated.
+				For the implementation, after calculating the texture coordinates, instead of taking the nearest texel, you take the floor to get the coordinates of the bottom-left texel, then add one to get the other three texels (bottom-right, top-left, top-right). You then interpolate horizontally between the top and bottom pairs, and then interpolate vertically between the results to get the final color.
+				
+			</p>
 		</h2>
 		<h2>
 			Task4:
